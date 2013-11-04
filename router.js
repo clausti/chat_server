@@ -31,7 +31,7 @@ function route(req, res) {
 	} else if (url == '/favicon.ico') {
 		console.log('no icon yet');
 	} else {
-		servePage(url, res);
+		servePage(url.slice(1, url.length), res);
 	}
 }
 
