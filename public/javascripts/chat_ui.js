@@ -5,7 +5,7 @@
 		//returns text
 		var queryString = $(event.target).serialize();
 		queryString = queryString.slice(8, queryString.length);
-		queryString = queryString.replace(/\++/, ' ');
+		queryString = queryString.replace(/\++/g, ' ');
 		return queryString;
 	};
 

@@ -16,7 +16,6 @@ var chatServer = require('./lib/chat_server.js')
 var io = chatServer.createChat(httpServer);
 chatServer.createSocket(io)
 
-// module.exports.io = io;
 
 
 
