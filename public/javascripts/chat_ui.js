@@ -4,7 +4,9 @@
 	ChatUI.getMessage = function(data) {
 		//returns text
 		var queryString = $(event.target).serialize();
-		return queryString.slice(8, queryString.length);
+		queryString = queryString.slice(8, queryString.length);
+		queryString = queryString.replace(/\++/, ' ');
+		return queryString;
 	};
 
 	ChatUI.sendMessage = function(messageText, socket) {
@@ -12,7 +14,9 @@
 	};
 
 	ChatUI.displayMessage = function(data) {
-		$("#message-display").append(document.createTextNode(data));
+		var text = document.createTextNode(data);
+		$("#message-display").append(text)
+		$("#message-display").append($("<br>"));
 	};
 
 })();
@@ -21,7 +25,7 @@
 
 $(document).ready(function() {
 
-	var socket = io.connect('http://localhost');
+	var socket = io.connect();
 
 	socket.on('message', function(message) {
 		console.log(message);
@@ -33,4 +37,5 @@ $(document).ready(function() {
 		var messageText = ChatUI.getMessage(event);
 		ChatUI.sendMessage(messageText, socket);
 	});
+
 });
